@@ -30,3 +30,20 @@ project = {
     }
   ]
 }
+
+tasks_per_person = (project[:steps].length / project[:committee].length).to_i
+puts tasks_per_person
+
+current_step = 0
+
+project[:committee].each do |committee_member|
+  tasks_per_person.times do |tasks|
+    project[:steps][current_step][:person] = committee_member
+    puts "Current step is #{current_step} and this is the name #{committee_member}"
+    current_step += 1
+  end
+end
+
+project[:steps].each do |step|
+  puts step
+end
